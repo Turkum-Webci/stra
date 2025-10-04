@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sığınak Stra</title>
+<style>
+    #puan{
+    background-color: black;
+    color: beige;
+    font-size: 50px;
+}
+    #puan3{
+    background-color: black;
+    color: beige;
+    font-size: 50px;
+}
+#kl{
+    font-size: 30px;
+    font-weight: 900;
+    background-color: blanchedalmond;
+}
+#kl *{
+    display: block;
+    font-size: 30px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 900;
+}
+#harita{
+    width: 200px;
+    height: 100px;
+    border-radius: 5px;
+}
+#poncik1{
+    display: none;
+}
+#s1{
+    background-color: aqua;
+}
+#s1 button{
+    background-color: rgb(155, 6, 6);
+    border-radius: 20px;
+    border: 0;
+    margin: 5px;
+    font-size: 17px;
+    font-weight: 900;
+    cursor: pointer;
+}
+#s1 button:hover{
+    transition: 0.2s;
+    background-color: rgb(197, 8, 8);
+    border-radius: 20px;
+    border: 0;
+    margin: 5px;
+    font-size: 17.5px;
+    font-weight: 900;
+}
+#s1 button:focus{
+    transition: 0.4s;
+    background-color: rgb(224, 8, 8);
+    border-radius: 23px;
+    border: 0;
+    margin: 4px;
+    font-size: 18px;
+    font-weight: 900;
+}
+#s1 option{
+    background-color: rgb(117, 160, 163);
+    color: black;
+    border-radius: 15px;
+    border: 0;
+    margin: 2px;
+    font-size: 12px;
+    font-weight: 200;
+    cursor: pointer;
+}
+#s1 select{
+    background-color: rgb(59, 182, 34);
+    color: black;
+    border-radius: 10px;
+    border: 0;
+    margin: 2px;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+    min-width: 100px;
+max-width: 500px;
+}
+#s1 h3{
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    border: 0;
+    margin-bottom: 10px;
+    font-size: 25px;
+    font-weight: 900;
+    width: 100%;
+text-align: center;
+}
+</style>
+</head>
+<body>
+    <center>
+    <h3 id="puan">5$</h3>
+    <img src="Hstra1.png" id="harita" alt="">
+    <h3 id="puan3">Olay: Yok</h3>
+    </center>
+    <div id="y1">
+        <input type="password" placeholder="Paketinizin Kodunu Giriniz.." id="pak1">
+        <button onclick="PK1()">Gir</button>
+        <br>
+        <hr>
+        <br>
+        <select name="" id="is">
+            <option value="isv">Yazılımcılık (6/s, +1m/s +0.1t/s)</option>
+            <option value="isu">Satışçılık (3p/s, +1m/s)</option>
+            <option value="isö">Bilgi Öğren (+0.5p/s +0.5t/s)</option>
+            <option value="isy">Yemekçi (4p/s, -1m/s -1a/s)</option>
+        </select>
+    </div>
+        <div id="kl">
+    <p id="km">Mutluluk:50%</p>
+    <p id="ka">Açlık:30%</p>
+    <p id="kh">Teknoloji: 1</p>
+    <p id="nfs">Nüfus: 3</p>
+    <p id="g1">Güç: 0</p>
+    </div>
+    <div id="s1">
+        <h3>Temel İhtiyaçlar:</h3>
+        <select name="" id="yem">
+            <option value="yem1">Bisküvi/Kraker (Açlık +4 Mutluluk +2 -6$)</option>
+            <option value="yem2">Tonla Bisküvi/Kraker (Açlık +17 Mutluluk -2 -30$)</option>
+            <option value="yem3">Lahmacun (Açlık +10 Mutluluk +7 -75$)</option>
+            <option value="yem4">Tonla Lahmacun (Açlık +100 Mutluluk +17 -750$)</option>
+        </select>
+        <button onclick="A2()" title="Yemek Seç">Yemek Al</button>
+        <button onclick="A4()" title="+2 Nüfus" id="siginak">Sığınak İnşa Et: 20$</button>
+        <hr>
+        <h3>Teknoloji:</h3>
+        <button onclick="A3()" title="Teknoloji +5">Araştırma Yap: 15$</button>
+        <button onclick="A5()" title="Güç +1 Min Teknoloji Seviyesi:20">Drone Yap: 25$</button>
+        <button onclick="A9()" title="Güç +1/5s Teknoloji +1/5s Min Teknoloji Seviyesi:100">Araştırmacı Yetiştir: 200$</button>
+        <button onclick="A10()" title="Güç +10 Min Teknoloji Seviyesi:30">Gelişmiş Dron Yap: 100$</button>
+        <select name="" id="rob">
+            <option value="rob1">MiniBot (Min Teknoloji: 20 Güç +2 -30$)</option>
+            <option value="rob2">OrtaBot (Min Teknoloji:45 Güç +5 -70$)</option>
+            <option value="rob3">BüyükBot (Min Teknoloji: 90 Güç +12 -140$)</option>
+            <option value="rob4">MegaBot (Min Teknoloji: 250 Güç +75 -750$)</option>
+            <option value="rob5">SüperBot (Süper Paketi İçin Geçerlidir ! Min Teknoloji: 175 Güç +125 -450$)</option>
+        </select>
+        <button onclick="A11()" title="Robot Seç">Robot Yap</button>
+        <hr>
+        <h3>Diğer:</h3>
+<button onclick="A1()" title="+4 Mutluluk" id="kmv1a">Oyun Oyna: 3$</button>
+<button onclick="A6()" title="+1 Güç -1 Nüfus" id="yrmz">Yaramazları Eğit: 15$</button>
+<button onclick="A7()" title="Min Güç 20 +9 Açlık -1 Güç +17$ Yapmak İçin Gereken Puan:120">Yağma yap</button>
+        <select name="" id="sal">
+            <option value="sal1">Yaramazlar (Min Güç 20 Min Puan 70 +130$ +4 Nüfus -5 Güç Yenilirsen: -120$ -3 Nüfus -7 Güç)</option>
+            <option value="sal2">Uslular (Min Güç 35 Min Puan 60 +70$ +5 Nüfus -2 Güç Yenilirsen: -80$ -1 Nüfus -3 Güç)</option>
+            <option value="sal3">Kedililer (Min Güç 50 Min Puan 90 +120$ +2 Nüfus -3 Güç Yenilirsen: -140$ -9 Nüfus -49 Güç)</option>
+        </select>
+<button onclick="A8()" title="Nereye Saldırı Yapacağınızı Seçin">Saldır</button>
+        <button onclick="A12()" title="Güç 1.2 kat artar">Yaramazları Güçlendir: 200$</button>
+        <button onclick="A13()" title="Güç 1.5 kat artar">Yaramazları Çok Güçlendir: 1000$</button>
+        <button onclick="A14()" title="Her Milisaniye Random gücün azalır eğer 10 saniye 50 gücün altına düşmezsen kazanırsın yoksa kaybedersin">Boss İle Savaş</button>
+                <select name="" id="bin">
+            <option value="bin1">Gelişmiş Sığınak (Min Teknoloji: 20 +5 Nüfus -75$)</option>
+            <option value="bin2">Yaramaz Sığınak (Min Teknoloji:10 Güç +3 -40$)</option>
+            <option value="bin3">Salıncak (Min Teknoloji:5 Mutluluk +1/s -20$)</option>
+            <option value="bin4">Elma Yetiştir (Min Teknoloji: 5 Açlık +10 -10$)</option>
+            <option value="bin5">Dino Sığınağı :) (Min Teknoloji: 900 Açlık -900 Mutluluk -12000 Nüfus -200 Güç +1 Teknoloji -200 -10000$)</option>
+        </select>
+        <button onclick="A15()" title="Yapı Seç">Yapı Yap</button>
+        <button onclick="A16()" title="Mutluluk 3/s Güç +7 -10$" id="poncik1">Ponçiği Al: 10$</button>
+<!--<button onclick="A4()" id="az1" title="+50 Kedi Açlığı ve -1 Kedi Mutluluğu Kedi Hastalığı Oluşturur">Kediye Çok Mama Ver: 100$</button>
+<button onclick="A5()" title="-7 Kedi Açlığı ve +40 Kedi Mutluluğu">Kediyle Çok Oyun Oyna: 40$</button>
+<hr>
+<button onclick="A6()" title="-12 Kedi Açlığı ve -27 kedi mutluluğu +50$">İşine Daha Çok Vakit Ayır: +50$</button>-->
+    </div>
+    <script>
+                var rand1 = Math.floor(Math.random()* 10);
+        var p1 = rand1;
+        var p1a = 0;
+        var p1a2;
+        var kmv = 50;
+        var kav = 30;
+        var khv = 0;
+        var nfs1 = 3;
+        var g1v = 0;
+        var yg1 = 2;
+        var km1a = 0;
+        var ar1 = "x";
+        var ar2 = "x";
+        var ar3 = "x";
+        var ar4 = "x";
+        var ar5 = "x";
+        var ar6 = "x";
+        var ar7 = "x";
+        var ar8 = "x";
+        var is = document.getElementById("is");
+        var pak1 = document.getElementById("pak1");
+        var poncik1 = document.getElementById("poncik1");
+        var sal = document.getElementById("sal");
+        var yrmz = document.getElementById("yrmz");
+        var rob = document.getElementById("rob");
+        var bin = document.getElementById("bin");
+        var yem = document.getElementById("yem");
+        var kme = document.getElementById("km");
+        var kae = document.getElementById("ka");
+        var khe = document.getElementById("kh");
+        var oly1 = document.getElementById("puan3");
+        var hrt = document.getElementById("harita");
+        var ge1 = document.getElementById("g1");
+        var pe1 = document.getElementById("puan");
+        var nfs2 = document.getElementById("nfs");
+        var az1 = document.getElementById("az1");
+        var siginak = document.getElementById("siginak");
+        pe1.textContent = p1 + "$"
+        function PK1(){
+            if (pak1.value == "dino1pkt"){
+        kmv = 120;
+        kav = 175;
+        khv = 25;
+        nfs1 = 15;
+        g1v = 17;
+        p1 = 190;
+        p1a = 25;
+        siginak.innerHTML = "Dino Sığınağı İnşaa Et: 25$";
+        yrmz.innerHTML = "Dino Yaramazı Eğit: 10$";
+        ar3 = "y";
+pe1.textContent = p1 + "$";
+            }
+            else if (pak1.value == "mini1pkt"){
+        kmv = 75;
+        kav = 50;
+        khv = 7;
+        nfs1 = 9;
+        g1v = 7;
+        p1 = 60;
+        p1a = 8;
+pe1.textContent = p1 + "$";
+            }
+            else if (pak1.value == "orta1pkt"){
+        kmv = 120;
+        kav = 90;
+        khv = 20;
+        nfs1 = 12;
+        g1v = 20;
+        p1 = 150;
+        p1a = 12;
+pe1.textContent = p1 + "$";
+            }
+            else if (pak1.value == "kedi1pkt"){
+        kmv = 80;
+        kav = 40;
+        khv = 3;
+        nfs1 = 4;
+        g1v = 2;
+        p1 = 30;
+        p1a = 3;
+        poncik1.style.display = "inline";
+pe1.textContent = p1 + "$";
+            }
+            else if (pak1.value == "byk1pkt"){
+        kmv = 350;
+        kav = 245;
+        khv = 45;
+        nfs1 = 27;
+        g1v = 45;
+        p1 = 450;
+        p1a = 30;
+pe1.textContent = p1 + "$";
+            }
+            else if (pak1.value == "ynlmz1pkt"){
+        kmv = 1200;
+        kav = 600;
+        khv = 90;
+        nfs1 = 500;
+        g1v = 1500;
+        p1 = 1200;
+        p1a = 50;
+pe1.textContent = p1 + "$";
+hrt.src = "Hstra18.png";
+setTimeout(function(){
+hrt.src = "Hstra19.png";
+}, 15000);
+setTimeout(function(){
+hrt.src = "Hstra20.png";
+}, 15500);
+setTimeout(function(){
+hrt.src = "Hstra21.png";
+}, 16000);
+setTimeout(function(){
+hrt.src = "Hstra22.png";
+}, 16500);
+setTimeout(function(){
+hrt.src = "Hstra23.png";
+}, 17000);
+setTimeout(function(){
+hrt.src = "Hstra24.png";
+}, 17500);
+setTimeout(function(){
+hrt.src = "Hstra25.png";
+}, 18000);
+setTimeout(function(){
+hrt.src = "Hstra26.png";
+}, 18500);
+setTimeout(function(){
+hrt.src = "Hstra26.png";
+alert("Tebrikler Oyunda uğraşarak bunu izlemeyi hakettiniz");
+}, 20000);
+            }
+            else if (pak1.value == "video1izle" && g1v >= 5){
+pe1.textContent = p1 + "$";
+hrt.src = "Hstra28.png";
+setTimeout(function(){
+hrt.src = "Hstra29.png";
+}, 1000);
+setTimeout(function(){
+hrt.src = "Hstra30.png";
+}, 1500);
+setTimeout(function(){
+hrt.src = "Hstra31.png";
+}, 2000);
+setTimeout(function(){
+hrt.src = "Hstra32.png";
+}, 2500);
+setTimeout(function(){
+hrt.src = "Hstra33.png";
+}, 3000);
+setTimeout(function(){
+hrt.src = "Hstra34.png";
+}, 4000);
+            }
+            else if (pak1.value == "video1izle" && g1v <= 5){
+pe1.textContent = p1 + "$";
+hrt.src = "Hstra6.png";
+alert("Öyle Beleşe Video İzlemek Yok :D Kaybettin");
+            }
+            else if (pak1.value == "yrmz1pkt"){
+        kmv = 90;
+        kav = 30;
+        khv = 2;
+        nfs1 = 4;
+        g1v = 3;
+        p1 = 10;
+        p1a = 2;
+        yrmz.innerHTML = "Güçlü Yaramazı Eğit: 25$";
+        ar5 = "y";
+pe1.textContent = p1 + "$";
+            }
+            else if (pak1.value == "sgnk1pkt"){
+        kmv = 70;
+        kav = 40;
+        khv = 1;
+        nfs1 = 10;
+        g1v = 1;
+        p1 = 5;
+        p1a = 2;
+        siginak.innerHTML = "Kaliteli Sığınak İnşaa Et: 25$";
+        ar6 = "y";
+pe1.textContent = p1 + "$";
+            }
+            else if (pak1.value == "mega1pkt"){
+        kmv = 1250;
+        kav = 945;
+        khv = 75;
+        nfs1 = 135;
+        g1v = 75;
+        p1 = 2350;
+        p1a = 34;
+        siginak.innerHTML = "Mega Sığınak İnşaa Et: 15$";
+        yrmz.innerHTML = "Mega Yaramaz Eğit: 10$";
+        ar7 = "y";
+pe1.textContent = p1 + "$";
+            }
+            else if (pak1.value == "poncik1pkt"){
+        kmv = 75;
+        kav = 25;
+        khv = 0;
+        nfs1 = 5;
+        g1v = 4;
+        p1 = 2;
+        p1a = 1;
+        poncik1.style.display = "inline";
+pe1.textContent = p1 + "$";
+            }
+            else if (pak1.value == "super1pkt"){
+        kmv = 95;
+        kav = 75;
+        khv = 15;
+        nfs1 = 8;
+        g1v = 7;
+        p1 = 45;
+        p1a = 5;
+        siginak.innerHTML = "Süper Sığınak İnşaa Et: 30$";
+        yrmz.innerHTML = "Süper Yaramaz Eğit: 25$";
+        ar8 = "y";
+        poncik1.style.display = "inline";
+pe1.textContent = p1 + "$";
+            }
+        }
+setInterval(function(){
+if (kav <= 0){
+    kav -= 3;
+        kmv -= 3;
+        nfs1 -= 1;
+        kme.textContent = "Mutluluk: " + kmv + "%";
+        kae.textContent = "Açlık: " + kav + "%";
+        nfs2.textContent = "Nüfus: " + nfs1;
+}
+if (kmv <= 0){
+document.getElementById("kmv1a").scrollIntoView({
+    behavior: "smooth"
+});
+}
+if (is.value == "isö"){
+    p1a += 0.5;
+    p1a2 = p1a / 5;
+pe1.textContent = p1 + "$";
+kav -= 2;
+kmv += 0 + km1a;
+kae.textContent = "Açlık: " + kav + "%";
+kme.textContent = "Mutluluk: " + kmv + "%";
+}
+else if (is.value == "isv"){
+p1 += 6 + p1a;
+khv += 0.1;
+pe1.textContent = p1 + "$";
+kav -= 3;
+kmv -= 1;
+kae.textContent = "Açlık: " + kav + "%";
+kme.textContent = "Mutluluk: " + kmv + "%";
+khe.textContent = "Teknoloji: " + khv;
+}
+else if (is.value == "isu"){
+p1 += 3 + p1a;
+pe1.textContent = p1 + "$";
+kav -= 2;
+kmv += 1 + km1a;
+kae.textContent = "Açlık: " + kav + "%";
+kme.textContent = "Mutluluk: " + kmv + "%";
+}
+else if (is.value == "isy"){
+p1 += 4 + p1a;
+pe1.textContent = p1 + "$";
+kmv -= 1;
+kav -= 1;
+kae.textContent = "Açlık: " + kav + "%";
+kme.textContent = "Mutluluk: " + kmv + "%";
+}
+if (nfs1 < 0){
+    alert("Kaybettin");
+    window.location.reload();
+}
+        }, 1000);
+        setInterval(function(){
+if (kmv <= -200){
+    hrt.src = "Hstra6.png";
+    alert("Kaybettin");
+    window.location.reload();
+}
+        }, 1000);
+                function A1() {
+        if (p1 >= 3) {
+            kmv += 4;
+            p1 -= 3;
+            kme.textContent = "Mutluluk: " + kmv + "%";
+            pe1.textContent = p1 + "$";
+        }
+        }
+                function A16() {
+        if (p1 >= 10) {
+            km1a = 5;
+            g1v += 7;
+            p1 -= 10;
+            ge1.textContent = "Güç: " + g1v;
+            pe1.textContent = p1 + "$";
+        poncik1.style.display = "none";
+        }
+        }
+        function A2() {
+        if (yem.value == "yem1" && p1 >= 6) {
+            kav += 4;
+            kmv += 2;
+            p1 -= 6;
+            kae.textContent = "Açlık: " + kav;
+            kmv.textContent = "Mutluluk: " + kmv;
+            pe1.textContent = p1 + "$";
+        }
+        else if (yem.value == "yem2" && p1 >= 30) {
+            kav += 17;
+            kmv -= 2;
+            p1 -= 30;
+            kae.textContent = "Açlık: " + kav;
+            kmv.textContent = "Mutluluk: " + kmv;
+            pe1.textContent = p1 + "$";
+        }
+        else if (yem.value == "yem3" && p1 >= 75) {
+            kav += 10;
+            kmv += 7;
+            p1 -= 75;
+            kae.textContent = "Açlık: " + kav;
+            kmv.textContent = "Mutluluk: " + kmv;
+            pe1.textContent = p1 + "$";
+        }
+        else if (yem.value == "yem4" && p1 >= 750) {
+            kav += 100;
+            kmv += 17;
+            p1 -= 750;
+            kae.textContent = "Açlık: " + kav;
+            kmv.textContent = "Mutluluk: " + kmv;
+            pe1.textContent = p1 + "$";
+        }
+        }
+        function A3() {
+        if (p1 >= 15) {
+            khv += 5;
+            p1 -= 15;
+            khe.textContent = "Teknoloji: " + khv;
+            pe1.textContent = p1 + "$";
+        }
+        }
+        function A4() {
+        if (p1 >= 500 && khv >= 200){
+            nfs1 += 5;
+            kmv += 5;
+            p1 -= 10;
+            nfs2.textContent = "Nüfus: " + nfs1;
+            kme.textContent = "Mutluluk: " + kmv;
+            pe1.textContent = p1 + "$";
+            oly1.textContent = "Başarım Açıldı: Süper Sığınak. Paket Kodun: sgnk1pkt";
+        }
+        else if (p1 >= 25 && ar6 == "y"){
+            nfs1 += 5;
+            kmv += 3;
+            p1 -= 25;
+            nfs2.textContent = "Nüfus: " + nfs1;
+            kme.textContent = "Mutluluk: " + kmv;
+            pe1.textContent = p1 + "$";
+        }
+        else if (p1 >= 30 && ar8 == "y"){
+            nfs1 += 8;
+            kmv += 10
+            p1 -= 30;
+            nfs2.textContent = "Nüfus: " + nfs1;
+            kme.textContent = "Mutluluk: " + kmv;
+            pe1.textContent = p1 + "$";
+        }
+        else if (p1 >= 25 && ar3 == "y"){
+            nfs1 += 4;
+            kmv += 12;
+            p1 -= 25;
+            nfs2.textContent = "Nüfus: " + nfs1;
+            kme.textContent = "Mutluluk: " + kmv;
+            pe1.textContent = p1 + "$";
+        }
+        else if (p1 >= 15 && ar7 == "y"){
+            nfs1 += 20;
+            kmv += 55;
+            p1 -= 15;
+            nfs2.textContent = "Nüfus: " + nfs1;
+            kme.textContent = "Mutluluk: " + kmv;
+            pe1.textContent = p1 + "$";
+        }
+        else if (p1 >= 20) {
+            nfs1 += 2;
+            p1 -= 20;
+            nfs2.textContent = "Nüfus: " + nfs1;
+            pe1.textContent = p1 + "$";
+        }
+        }
+        function A5() {
+        if (p1 >= 25 && khv >= 20) {
+            g1v += 1;
+            p1 -= 25;
+            ge1.textContent = "Güç: " + g1v;
+            pe1.textContent = p1 + "$";
+        }
+        }
+        function A6() {
+        if (p1 >= 14000 && kav >= 1200 && kmv >= 900 && g1v >= 5000 && khv >= 1250 && nfs1 >= 1750 && ar3 == "y" && ar4 == "z"){
+            nfs1 -= 1;
+            g1v += 1;
+            kmv += 3;
+            p1 -= 10;
+            nfs2.textContent = "Nüfus: " + nfs1;
+            ge1.textContent = "Güç: " + g1v;
+            kme.textContent = "Mutluluk: " + kmv;
+            pe1.textContent = p1 + "$";
+            oly1.textContent = "Tebrikler Başarım Açıldı: Saldıran Yaramazlar. Paket Kodun: ynlmz1pkt";
+        }
+        else if (p1 >= 10 && ar3 == "y"){
+            nfs1 -= 1;
+            g1v += 1;
+            kmv += 3;
+            p1 -= 10;
+            nfs2.textContent = "Nüfus: " + nfs1;
+            ge1.textContent = "Güç: " + g1v;
+            kme.textContent = "Mutluluk: " + kmv;
+            pe1.textContent = p1 + "$";
+        }
+        else if (p1 >= 25 && ar8 == "y"){
+            nfs1 -= 1;
+            g1v += 5;
+            kmv += 8;
+            p1 -= 10;
+            nfs2.textContent = "Nüfus: " + nfs1;
+            ge1.textContent = "Güç: " + g1v;
+            kme.textContent = "Mutluluk: " + kmv;
+            pe1.textContent = p1 + "$";
+        }
+        else if (p1 >= 10 && ar7 == "y"){
+            nfs1 -= 1;
+            g1v += 25;
+            kmv += 12;
+            p1 -= 10;
+            nfs2.textContent = "Nüfus: " + nfs1;
+            ge1.textContent = "Güç: " + g1v;
+            kme.textContent = "Mutluluk: " + kmv;
+            pe1.textContent = p1 + "$";
+        }
+        else if (p1 >= 25 && ar5 == "y"){
+            nfs1 -= 1;
+            g1v += 3;
+            kmv += 1;
+            p1 -= 25;
+            nfs2.textContent = "Nüfus: " + nfs1;
+            ge1.textContent = "Güç: " + g1v;
+            kme.textContent = "Mutluluk: " + kmv;
+            pe1.textContent = p1 + "$";
+        }
+        else if (p1 >= 9000 && kav >= 900 && kmv >= 250 && g1v >= 2000 && khv >= 250 && nfs1 >= 750) {
+            g1v += 100;
+            nfs1 += 200;
+            p1 += 1500;
+            ge1.textContent = "Güç: " + g1v;
+            nfs2.textContent = "Nüfus: " + nfs1;
+            oly1.textContent = "Tebrikler Başarım Açıldı: Yenilmez Yaramazlar. Paket Kodun: byk1pkt";
+            pe1.textContent = p1 + "$";
+        }
+        else if (p1 >= 15 && kav >= 20) {
+            g1v += 1;
+            nfs1 -= 1;
+            p1 -= 15;
+            ge1.textContent = "Güç: " + g1v;
+            nfs2.textContent = "Nüfus: " + nfs1;
+            pe1.textContent = p1 + "$";
+        }
+        }
+        function A7() {
+        if (p1 >= 120 && g1v >= 20) {
+            g1v -= 1;
+            p1 += 17;
+            kav += 9;
+            ge1.textContent = "Güç: " + g1v;
+            kae.textContent = "Açlık: " + kav;
+            pe1.textContent = p1 + "$";
+        }
+        }
+        function A8() {
+        if (sal.value == "sal1" && p1 >= 120 && g1v >= 90) {
+            g1v -= 1;
+            p1 += 140;
+            nfs1 += 5;
+            ge1.textContent = "Güç: " + g1v;
+            nfs2.textContent = "Nüfus: " + nfs1;
+            pe1.textContent = p1 + "$";
+            hrt.src = "Hstra13.png";
+            ar4 = "y";
+        }
+        else if (sal.value == "sal1" && p1 >= 70 && g1v >= 20) {
+            g1v -= 3;
+            p1 += 130;
+            nfs1 += 4;
+            ge1.textContent = "Güç: " + g1v;
+            nfs2.textContent = "Nüfus: " + nfs1;
+            pe1.textContent = p1 + "$";
+            hrt.src = "Hstra2.png";
+        }
+        else if (sal.value == "sal1" && p1 >= 70 && g1v <= 20) {
+            g1v -= 7;
+            p1 -= 120;
+            nfs1 -= 3;
+            ge1.textContent = "Güç: " + g1v;
+            nfs2.textContent = "Nüfus: " + nfs1;
+            pe1.textContent = p1 + "$";
+        }
+        else if (sal.value == "sal2" && p1 >= 175 && g1v >= 120 && ar4 == "y") {
+            g1v -= 250;
+            p1 -= 160;
+            nfs1 -= 4;
+            ge1.textContent = "Güç: " + g1v;
+            nfs2.textContent = "Nüfus: " + nfs1;
+            pe1.textContent = p1 + "$";
+            hrt.src = "Hstra14.png";
+            ar4 = "z";
+        }
+        else if (sal.value == "sal2" && p1 >= 60 && g1v >= 35) {
+            g1v -= 2;
+            p1 += 70;
+            nfs1 += 5;
+            ge1.textContent = "Güç: " + g1v;
+            nfs2.textContent = "Nüfus: " + nfs1;
+            pe1.textContent = p1 + "$";
+            hrt.src = "Hstra3.png";
+        }
+        else if (sal.value == "sal2" && p1 >= 60 && g1v <= 35) {
+            g1v -= 3;
+            p1 -= 80;
+            nfs1 -= 1;
+            ge1.textContent = "Güç: " + g1v;
+            nfs2.textContent = "Nüfus: " + nfs1;
+            pe1.textContent = p1 + "$";
+        }
+        else if (sal.value == "sal3" && p1 >= 7500 && g1v >= 900 && ar4 == "z") {
+            g1v += 100;
+            p1 += 160;
+            nfs1 += 4;
+            ge1.textContent = "Güç: " + g1v;
+            nfs2.textContent = "Nüfus: " + nfs1;
+            pe1.textContent = p1 + "$";
+            hrt.src = "Hstra15.png";
+            setTimeout(function(){
+            hrt.src = "Hstra16.png";
+            }, 3000);
+            setTimeout(function(){
+            hrt.src = "Hstra17.png";
+            oly1.textContent = "Tüm Düşmanlarını Yenip Boss'un Destek Aldıklarını Yok Ettin Ve Bu Yüzden Tüm Düşmanların Ve Boss yenildi Artık Daha Düşmanın Yok.. Şimdilik \b Başarım Açıldı: Savaşçı. Paket Kodun: orta1pkt ";
+        }, 5000);
+        }
+        else if (sal.value == "sal3" && p1 >= 90 && g1v <= 50) {
+            g1v -= 49;
+            p1 -= 140;
+            nfs1 -= 9;
+            ge1.textContent = "Güç: " + g1v;
+            nfs2.textContent = "Nüfus: " + nfs1;
+            pe1.textContent = p1 + "$";
+        }
+        else if (sal.value == "sal3" && p1 >= 90 && g1v >= 51) {
+            g1v -= 3;
+            p1 += 120;
+            nfs1 += 2;
+            ge1.textContent = "Güç: " + g1v;
+            nfs2.textContent = "Nüfus: " + nfs1;
+            pe1.textContent = p1 + "$";
+            hrt.src = "Hstra4.png";
+            oly1.textContent = "Başarım Açıldı: Kedi. Paket Kodun: kedi1pkt ";
+        }
+    }
+            function A9() {
+        if (p1 >= 200 && khv >= 100 && ar1 == "x") {
+ar1 = "y";
+p1 -= 200;
+            pe1.textContent = p1 + "$";
+        }
+        }
+                function A10() {
+        if (p1 >= 100 && khv >= 30) {
+            g1v += 10;
+            p1 -= 100;
+            ge1.textContent = "Güç: " + g1v;
+            pe1.textContent = p1 + "$";
+        }
+        }
+        function A11() {
+        if (rob.value == "rob1" && p1 >= 30 && g1v >= 20) {
+            g1v += 2;
+            p1 -= 30;
+            ge1.textContent = "Güç: " + g1v;
+            pe1.textContent = p1 + "$";
+        }
+        else if (rob.value == "rob2" && p1 >= 70 && khv >= 45) {
+            g1v += 5;
+            p1 -= 70;
+            ge1.textContent = "Güç: " + g1v;
+            pe1.textContent = p1 + "$";
+        }
+        else if (rob.value == "rob3" && p1 >= 140 && khv >= 90) {
+            g1v += 12;
+            p1 -= 140;
+            ge1.textContent = "Güç: " + g1v;
+            pe1.textContent = p1 + "$";
+        }
+        else if (rob.value == "rob4" && p1 >= 750 && khv >= 5) {
+            g1v += 75;
+            p1 -= 750;
+            ge1.textContent = "Güç: " + g1v;
+            pe1.textContent = p1 + "$";
+        }
+        else if (rob.value == "rob5" && p1 >= 450 && khv >= 175 && ar8 == "y") {
+            g1v += 125;
+            p1 -= 450;
+            ge1.textContent = "Güç: " + g1v;
+            pe1.textContent = p1 + "$";
+        }
+    }
+        function A12() {
+        if (p1 >= 200) {
+            g1v *= 1.2;
+            p1 -= 200;
+            ge1.textContent = "Güç: " + g1v;
+            pe1.textContent = p1 + "$";
+        }
+        }
+        function A13() {
+        if (p1 >= 1000) {
+            g1v *= 1.5;
+            p1 -= 1000;
+            ge1.textContent = "Güç: " + g1v;
+            pe1.textContent = p1 + "$";
+        }
+        }
+            function A14() {
+        //if (p1 >= 2000) {
+ar2 = "y";
+        }
+        //}
+function A15() {
+        if (bin.value == "bin1" && p1 >=  75 && g1v >= 20) {
+            nfs1 += 5;
+            p1 -= 75;
+            nfs2.textContent = "Nüfus: " + nfs1;
+            pe1.textContent = p1 + "$";
+        }
+        else if (bin.value == "bin2" && p1 >= 40 && khv >= 10) {
+            g1v += 3;
+            p1 -= 40;
+            ge1.textContent = "Güç: " + g1v;
+            pe1.textContent = p1 + "$";
+        }
+        else if (bin.value == "bin3" && p1 >= 20 && khv >= 5) {
+            kmv += 7;
+            p1 -= 20;
+            kme.textContent = "Mutluluk: " + kmv;
+            pe1.textContent = p1 + "$";
+        }
+        else if (bin.value == "bin4" && p1 >= 10 && khv >= 10) {
+            kav += 10;
+            p1 -= 10;
+            kav.textContent = "Açlık: " + kav;
+            pe1.textContent = p1 + "$";
+        }
+    }
+        setInterval(function(){
+if (ar1 == "y"){
+    khv += 1;
+    g1v += 1;
+    khe.textContent = "Teknoloji: " + khv;
+    ge1.textContent = "Güç: " + g1v;
+}
+        }, 5000);
+setInterval(function(){
+yg1 += 1;
+    if (g1v <= yg1){
+        oly1.textContent = "Olay: Yağma Yapıldı Sonuç: Başarılı Oldu Öneri: Gücünüzü Arttırın";
+            g1v -= 2;
+            p1 -= 9;
+            kav -= 7;
+            ge1.textContent = "Güç: " + g1v;
+            kae.textContent = "Açlık: " + kav;
+            pe1.textContent = p1 + "$";
+    }
+    else {
+            oly1.textContent = "Olay: Yağma Yapıldı Sonuç: Başarısız Oldu";
+            g1v -= 1;
+            ge1.textContent = "Güç: " + g1v;
+    }
+}, 40000);
+setInterval(function(){
+    if (g1v <= 20){
+        oly1.textContent = "Olay: Afet Oldu Öneri: Gücünüzü Arttırın";
+            g1v -= 2;
+            p1 -= 10;
+            nfs1 -= Math.floor(Math.random()* 10);
+            kav -= 4;
+            ge1.textContent = "Güç: " + g1v;
+            kae.textContent = "Açlık: " + kav;
+            nfs2.textContent = "Nüfus: " + nfs1;
+            pe1.textContent = p1 + "$";
+    }
+    else {
+                oly1.textContent = "Olay: Afet Oldu Sonuç: Kimseye Birşey Olmadı";
+    }
+}, 120000);
+setInterval(function(){
+    if (g1v <= Math.floor(Math.random()* 30) + 10){
+        oly1.textContent = "Olay: Saldırı Yapıldı Sonuç: Başarılı Oldu Öneri: Gücünüzü Arttırın";
+            g1v -= 3;
+            p1 -= 13;
+            kav -= 7;
+            nfs1 -= Math.floor(Math.random()* 7);
+            ge1.textContent = "Güç: " + g1v;
+            kae.textContent = "Açlık: " + kav;
+            nfs2.textContent = "Nüfus: " + nfs1;
+            pe1.textContent = p1 + "$";
+    }
+    else {
+            oly1.textContent = "Olay: Saldırı Yapıldı Sonuç: Başarısız Oldu";
+            g1v -= 2;
+            p1 -= 7;
+            kav -= 3;
+            nfs1 -= Math.floor(Math.random()* 5);
+            ge1.textContent = "Güç: " + g1v;
+            kae.textContent = "Açlık: " + kav;
+            nfs2.textContent = "Nüfus: " + nfs1;
+            pe1.textContent = p1 + "$";
+    }
+}, 150000);
+        var s1s = setInterval(function(){
+if (ar2 == "y" && g1v >= 50){
+    g1v -= Math.floor(Math.random()* 30) + 5;
+    ge1.textContent = "Güç: " + g1v;
+        setTimeout(function(){
+if (ar2 == "y"){
+    clearInterval(s1s);
+                hrt.src = "Hstra5.png";
+            oly1.textContent = "Olay: Tebrikler Boss'u Yendin :) Paket Kodun: mini1pkt";
+            g1v += 75;
+            p1 += 2340;
+            nfs1 += Math.floor(Math.random()* 120);
+            kav += 920;
+            ge1.textContent = "Güç: " + g1v;
+            kae.textContent = "Açlık: " + kav;
+            nfs2.textContent = "Nüfus: " + nfs1;
+            pe1.textContent = p1 + "$";
+}
+        }, 10000);
+}
+else if (ar2 == "y" && g1v < 50){
+    alert("Kaybettin. Öneri: Boss ile Savaşmadan Önce Gücünü Çok ama Çok Arttır.");
+    window.location.reload();
+}
+    
+        }, 999);
+    </script>
+</body>
+</html>
+<!--//        function A4() {
+//        if (p1 >= 100) {
+//            kmv += 9;
+//            kav += 50;
+//            khv = "Var";
+//            p1 -= 100;
+//            kme.textContent = "Kedi Mutluluğu: " + kmv + "%";
+//            kae.textContent = "Kedi Açlığı: " + kav + "%";
+//            khe.textContent = "Kedi Hastalığı: " + khv;
+//            pe1.textContent = p1 + "$";
+//        }
+//    }
+//        function A5() {
+//        if (p1 >= 40) {
+//            kmv += 50;
+//            kav -= 7;
+//            p1 -= 40;
+//            kme.textContent = "Kedi Mutluluğu: " + kmv + "%";
+//            kae.textContent = "Kedi Açlığı: " + kav + "%";
+//            pe1.textContent = p1 + "$";
+//        }
+//    }
+//        function A6() {
+//        if (kmv >= 43) {
+//            kmv -= 27;
+//            kav -= 12;
+//            p1 += 50;
+//            kme.textContent = "Kedi Mutluluğu: " + kmv + "%";
+//            kae.textContent = "Kedi Açlığı: " + kav + "%";
+//            pe1.textContent = p1 + "$";
+//        }
+//    }-->

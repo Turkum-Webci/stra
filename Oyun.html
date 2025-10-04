@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kedi Stra</title>
+    <style>
+#puan{
+    background-color: black;
+    color: beige;
+    font-size: 50px;
+}
+#puan2{
+    background-color: black;
+    color: rgb(255, 255, 91);
+    font-size: 50px;
+}
+#kl{
+    font-size: 30px;
+    font-weight: 900;
+}
+#s1{
+    font-size: 30px;
+}
+    </style>
+</head>
+<body>
+    <center>
+    <h3 id="puan">5$</h3>
+    </center>
+    <center>
+    <h3 id="puan2">0 Tur</h3>
+    </center>
+    <div id="kl">
+    <p id="km">Kedi Mutluluğu:50%</p>
+    <p id="ka">Kedi Açlığı:30%</p>
+    <p id="kh">Kedi Hastalığı: Yok</p>
+    </div>
+    <div id="s1">
+<button onclick="A1()" title="+4 Kedi Mutluluğu">Kedi İle Oyun Oyna: 1$</button>
+<button onclick="A2()" title="+5 Kedi Açlığı ve +2 Kedi Mutluluğu">Kediye Mama Ver: 3$</button>
+<button onclick="A3()" title="Kedi Hastalığını İyileştirir">Kediyi Veteriner'e Götür: 4$</button>
+    </div>
+    <script>
+        var rand1 = Math.floor(Math.random()* 10);
+        var t1 = 0;
+        var p1 = rand1;
+        var kmv = 50;
+        var kav = 30;
+        var khv = "Yok";
+        var kme = document.getElementById("km");
+        var kae = document.getElementById("ka");
+        var khe = document.getElementById("kh");
+        var te1 = document.getElementById("puan2");
+        var pe1 = document.getElementById("puan");
+        pe1.textContent = p1 + "$"
+                setInterval(function(){
+    if (khv == "Var"){
+        kav -= 4;
+        kmv -= 5;
+        kme.textContent = "Kedi Mutluluğu: " + kmv + "%";
+        kae.textContent = "Kedi Açlığı: " + kav + "%";
+t1 += 1;
+p1 += 2;
+pe1.textContent = p1 + "$";
+te1.textContent = t1 + " Tur";
+}
+else if (kav <= 20){
+    kav -= 3;
+        kmv -= 3;
+        kme.textContent = "Kedi Mutluluğu: " + kmv + "%";
+        kae.textContent = "Kedi Açlığı: " + kav + "%";
+t1 += 1;
+p1 += 2;
+pe1.textContent = p1 + "$";
+te1.textContent = t1 + " Tur";
+}
+else if (kmv >= 80 && kav >= 50) {
+alert("Anasayfada Paket Açmak İçin Şu Kodu Gir:stra1izin");
+    t1 += 1;
+p1 += 5;
+pe1.textContent = p1 + "$";
+te1.textContent = t1 + " Tur";
+kav -= 1;
+kmv += 4;
+kae.textContent = "Kedi Açlığı: " + kav + "%";
+kme.textContent = "Kedi Mutluluğu: " + kmv + "%";
+}
+else if (kmv >= 80) {
+    t1 += 1;
+p1 += 3;
+pe1.textContent = p1 + "$";
+te1.textContent = t1 + " Tur";
+kav -= 2;
+kmv += 3;
+kae.textContent = "Kedi Açlığı: " + kav + "%";
+kme.textContent = "Kedi Mutluluğu: " + kmv + "%";
+}
+else {
+t1 += 1;
+p1 += 2;
+pe1.textContent = p1 + "$";
+te1.textContent = t1 + " Tur";
+kav -= 3;
+kmv += 2;
+kae.textContent = "Kedi Açlığı: " + kav + "%";
+kme.textContent = "Kedi Mutluluğu: " + kmv + "%";
+}
+        }, 5000);
+        setInterval(function(){
+khv = "Var";
+khe.textContent = "Kedi Hastalığı: " + khv;
+        }, 30000);
+        function A1() {
+        if (p1 >= 1) {
+            kmv += 4;
+            p1 -= 1;
+            kme.textContent = "Kedi Mutluluğu: " + kmv + "%";
+            pe1.textContent = p1 + "$";
+        }
+        }
+        function A2() {
+        if (p1 >= 3) {
+            kmv += 2;
+            kav += 5;
+            p1 -= 3;
+            kme.textContent = "Kedi Mutluluğu: " + kmv + "%";
+            kae.textContent = "Kedi Açlığu: " + kav + "%";
+            pe1.textContent = p1 + "$";
+        }
+        }
+        function A3() {
+        if (p1 >= 4 && khv == "Var") {
+            khv = "Yok";
+            p1 -= 4;
+            khe.textContent = "Kedi Hastalığı: " + khv;
+            pe1.textContent = p1 + "$";
+        }
+        }
+    </script>
+</body>
+</html>

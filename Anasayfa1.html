@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oyunlar Stra</title>
+    <style>
+        #s1 {
+            display: none;
+        }
+        #s2, #s3, #s4, #s5,#s6,#s7,#s8,#s9,#s10 {
+            display: none;
+        }
+        #kod{
+            width: 100%;
+            font-size: 14px;
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <button onclick="A()">Stra Puan Kazan !</button>
+    <p id="p1">Puan: 0</p>
+    </center>
+    <h1>Kedi Stra</h1>
+    <p>Gereken Puan:0</p>
+    <a href="Oyun.html" download="Kedi_Stra.html">İndir!</a>
+    <hr>
+    <h1>Pisi Stra</h1>
+    <p>Gereken Puan:20</p>
+    <a href="Oyun3.html" download="Pisi_Stra.html" id="s1">İndir!</a>
+    <p id="s3">Oyunda Öğretmenlik yap</p>
+    <h1>Sığınak Stra</h1>
+    <p>Gereken Puan:100</p>
+    <a href="Oyun4.html" download="Siginak_Stra.html" id="s2">İndir!</a>
+    <p id="s4">Boss'a sonlara doğru saldır</p>
+
+    <h1>Paketler: </h1>
+    <input type="password" placeholder="Lütfen Mini Paketin Kodunu Açmak İçin Kedi Stra Oyununda Mutluluğu  80den fazla yapıp açlığıda 50'den fazla yapınız.." id="kod">
+    <button onclick="B()">Gir</button>
+    <p id="s5">Mini Paketinin Kodu: mini1pkt</p>
+    <p id="s6">Orta Paketinin Kodu: orta1pkt</p>
+    <p id="s7">Büyük Paketinin Kodu: byk1pkt</p>
+    <p id="s8">Dino Paketinin Kodu: dino1pkt</p>
+    <p id="s10">Süper Paketinin Kodu: super1pkt</p>
+    <p id="s9">Yenilmez Paketinin Kodu: ynlmz1pkt</p>
+    <script>
+        var p1 = document.getElementById("p1");
+        var kod = document.getElementById("kod");
+        //p2 = localStorage.setItem("p2", p2 || 0);
+        p3 = 1;
+        window.onload = function(){
+    p2 = Number(localStorage.getItem("p2") || 0) + p3;
+            p1.textContent = "Puan: " + p2;
+        }
+        function B(){
+            if(kod.value == "stra1izin"){
+        document.getElementById("s5").style.display = "block";
+        p3 = 2;
+            }
+            else if(kod.value == "stra1portak"){
+        p3 = 3;
+        p1 + 100;
+            }
+        }
+function A() {
+            var p2 = Number(localStorage.getItem("p2") || 0);
+            p2 += p3;
+            localStorage.setItem("p2", p2);
+    p1.textContent = "Puan: " + p2;
+    if (p2 >= 20) {
+        document.getElementById("s1").style.display = "inline";
+        document.getElementById("s3").style.display = "block";
+    }
+    if (p2 >= 100) {
+        document.getElementById("s2").style.display = "inline";
+        document.getElementById("s4").style.display = "block";
+    }
+    if (p2 >= 500) {
+        document.getElementById("s5").style.display = "block";
+    }
+    if (p2 >= 1000) {
+        document.getElementById("s6").style.display = "block";
+    }
+    if (p2 >= 4500) {
+        document.getElementById("s7").style.display = "block";
+    }
+    if (p2 >= 6000) {
+        document.getElementById("s8").style.display = "block";
+    }
+    if (p2 >= 12000) {
+        document.getElementById("s10").style.display = "block";
+    }
+    if (p2 >= 15000) {
+        document.getElementById("s9").style.display = "block";
+    }
+}
+    </script>
+</body>
+</html>
